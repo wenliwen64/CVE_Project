@@ -1,0 +1,74 @@
+I. Get the Lambda(AntiLambda) efficiency and plot relevant figures
+
+1. cuts_fp_la.C: used to
+
+    i. get the weight_lambda(antilambda)_exp(fp).txt which consists of informationa about efficiency and efficiency error(still questionable)
+
+    Input: root -l cuts_fp_la.C++\(0,700,"exp"\)
+    Output: weight_lambda(antilambda)_exp(fp).txt
+    Location: pdsf@/eliza14/star/pwg/starlfs/lwen1990/embedding/Lambda/analysis/macro_lib
+
+2. plot_eff.C: used to 
+
+    i. plot the exp and flat distribution efficiency of Lambda(AntiLambda); 
+    ii. Fit the distribution and get the parameters; 
+    iii. output the eff_fit_par_Lambda.dat in output directory. 
+
+    Input: weight_lambda_exp.txt, weight_lambda_exp_scale.txt, weight_lambda_fp.txt, weight_lambda_fp_scale.txt.(Those files are from pdsf)
+    Output: eff_fit_par_Lambda.dat(needs to be uploaded to giant to run with Parity.C) and couple of figures.
+    Location: macbook@/Users/lwen/Documents/CVE_Project/eff_analysis/Lambda_Analysis/macro_lib 
+
+II. Lambda(AntiLambda) Embedding QA:
+
+1. emd_QA_sim.C: used to 
+    
+    i. apply cuts on the simulation data(picodst filesa). The cuts are the same with real cuts used in Parity.C. We only split lambda into several pt bins, combining all of the centrality bins. 
+
+    Input: root -l emd_QA_sim.C++\(0,700,"exp"\)
+    Output: embedding_QA_sim_fp(exp).root which contains the QA histograms for all of the pt bins
+    Location: /global/homes/l/lwen1990/pwg/embedding/Lambda/analysis/macro_lib@pdsf
+
+2. emd_QA_dat.C: used to 
+    
+    i. apply cuts on the real data(picodst files). The cuts are the same with those in Parity.C. 
+
+    Input: root -l emd_QA_dat.C++ 
+    Output: embedding_QA_dat.root
+    Location: /gpfs/mnt/gpfs01/star/i_ucla/lwen1990/v2_Lambda_200GeV/eff_analysis@rcf 
+
+III. Proton Efficiency(TPC and TOF)
+
+TPC:
+
+1. Calc_Eff_200: used to 
+   i. get the tpc efficiency histogram for centrality bins;
+
+   Input: root -l Calc_Eff_200.C++\(1\)
+   Output: cen1.eff_200_p.root
+   Location: /home/lwen/Analysis/CVE_Project/eff_study/proton_eff/macro_lib@giant 
+
+2. FitEff_cen:
+   i. get the fitting parameters for the efficiency curve of protons:
+
+   Input: root -l Fiteff_cen.C
+   Output: proton_tpc_eff_fit.dat
+   Location: /home/lwen/Analysis/CVE_Project/eff_study/proton_eff/macro_lib@giant
+
+TOF:
+
+1. cal_eff_protonII: used to 
+
+   i. Get the tof efficiency data for proton in 200GeV collision
+
+   Input: root -l cal_eff_protonII.C++\(1\)
+   Output: eff_proton_cen1.root
+   Location:/home/lwen/Analysis/CVE_Project/eff_study/proton_eff/macro_lib@giant
+
+2. plot_tof_eff.C used to
+  i. plot the figures of tof eff of protons in 200GeV:
+
+   Input: root -l plot_tof_eff.C
+   Output: figures: tof_eff_cen1.eps
+   Location:/home/lwen/Analysis/CVE_Project/eff_study/proton_eff/macro_lib@giant
+   Location:/Users/lwen/Documents/CVE_Project/eff_analysis/Proton_Run11_200GeV/macro_lib@macbook
+   
